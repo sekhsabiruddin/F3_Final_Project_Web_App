@@ -1,0 +1,158 @@
+/* Write your styles here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.form-box {
+  padding: 1rem 1rem;
+}
+.form-box input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  height: 2rem;
+  outline: none;
+}
+#SaveInfo,
+#LogOut {
+  width: 140px;
+  background: #ddd;
+  background-color: black;
+  color: #fff;
+  margin-top: 2rem;
+}
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+
+  background-color: black;
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav .nav-items a {
+  margin: 0 1rem;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  color: #fff;
+  padding: 1.2rem 3rem;
+}
+header .nav-bar .header-logo span {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: blue;
+  font-weight: bolder;
+}
+
+header .nav-bar a {
+  display: inline;
+  text-decoration: none;
+  padding: 0.3rem 1rem;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-left: 20px;
+}
+header .nav-bar a:hover {
+  color: hotpink;
+}
+.dashbord-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  margin-top: 1rem;
+}
+.dashbord-from {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.dashbord-from .input-box {
+  width: 35%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 1rem 2rem;
+}
+.dashbord-from h2 {
+  text-align: center;
+  color: #73063c;
+  font-size: 1.6rem;
+}
+.dashbord-from .input-filed {
+  margin: 17px 0;
+  text-align: center;
+  position: relative;
+}
+.dashbord-from .input-filed i {
+  position: absolute;
+  top: 7px;
+  left: 30px;
+}
+.dashbord-from .input-filed input {
+  padding: 0.5rem 2rem;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 90%;
+}
+.dashbord-from .change_password,
+.log_out_btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+  border-radius: 10px;
+  background: #ed0d7d;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 1px solid;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+}
+#dashbordError {
+  color: red;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  display: none;
+}
+#username {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: navy;
+
+  text-transform: capitalize;
+}
+#Useremail {
+  font-weight: 700;
+  color: navy;
+}

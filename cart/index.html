@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <nav>
+    <div class="brand">
+      <a href="/">MeShop.</a>
+    </div>
+    <div class="nav-items">
+      <a href="/shop/index.html">Home</a>
+      <a href="/login/login.html">Login</a>
+      <a href="/singup/index.html">Signup</a>
+      <a href="/cart/index.html">My Cart</a>
+      <a href="/profile/index.html">Profile</a>
+    </div>
+  </nav>
+  <div class=" title">
+    <h2>My Cart</h2>
+  </div>
+  <section class="section">
+
+    <div id="left-side">
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+
+      <!-- box-1 -->
+      <div class="showPRoduct">
+        <div class="img-box">
+          <img src="./tshirt.png" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>T-shirt combo</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>120</spa>
+        </div>
+        <div>
+          <button class="removeBtn">Remove</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="right-side">
+      <h3>Check Out</h3>
+      <div id="product-box">
+        <!-- <div class="price-box">
+          <p class="pname">Tshirt </p>
+          <p>600/-</p>
+        </div> -->
+      </div>
+      <!-- <div id="product-box">
+        <div class="price-box">
+          <p class="pname">Fshirt </p>
+          <p>700/-</p>
+        </div>
+      </div>
+    </div> -->
+      <div class="total-box">
+        <h3>Total</h3>
+        <p id="TotalPrice"></p>
+      </div>
+      <button id="checkout"> Chechk List</button>
+
+    </div>
+  </section>
+
+  <script src=" https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+
+
+    function showAddCartPageOfProduct() {
+      let temp = JSON.parse(localStorage.getItem("addToCart"));
+      let item = temp.map((val) => {
+
+        return `<div class="showPRoduct" id="${val.id}">
+        <div class="img-box">
+          <img src="${val.image}" alt="">
+        </div>
+        <div>
+          <span class="title">Title</span>
+          <span>${val.title}</span>
+        </div>
+        <div>
+          <span class="price">Price</span>
+          <spa>${val.price}</span>
+        </div>
+        <div>
+          <button class="removeBtn" onclick="removeProduct(${val.id})">Remove</button>
+        </div>
+      </div>
+        `;
+
+      });
+      document.getElementById("left-side").innerHTML = item.join("");
+      // console.log("item value", item);
+    }
+
+    showAddCartPageOfProduct();
+    //-----this function show the left side podurct list along with price total
+    function updateCheckPrice() {
+      let temp = JSON.parse(localStorage.getItem("addToCart"));
+
+      let item = temp.map((val) => {
+
+        return `
+        <div class="price-box">
+          <p class="pname">${val.title} </p>
+          <p>${val.price}</p>
+        </div>
+      </div>
+        `;
+      });
+      let totalPrice = 0;
+      for (let i = 0; i < temp.length; i++) {
+        totalPrice += parseInt(temp[i].price);
+        // console.log(totalPrice, parseInt(temp[i].price));
+      }
+      console.log(totalPrice);
+      document.getElementById("TotalPrice").innerHTML = totalPrice;
+      document.getElementById("product-box").innerHTML = item.join();
+    }
+    updateCheckPrice();
+    //==========================this function remove the product from the proudct list 
+    function removeProduct(id) {
+      console.log(id);
+      let temp = JSON.parse(localStorage.getItem("addToCart"));
+      const filtered = temp.filter((item, index) => (item[index].id !== id));
+      console.log(filtered);
+    }
+
+
+
+  </script>
+</body>
+
+</html>

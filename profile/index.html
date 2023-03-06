@@ -1,0 +1,154 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav>
+    <div class="brand">
+      <a href="/">MeShop.</a>
+    </div>
+    <div class="nav-items">
+      <a href="/shop/index.html">Home</a>
+      <a href="/login/login.html">Login</a>
+      <a href="/singup/index.html">Signup</a>
+      <a href="/cart/index.html">My Cart</a>
+      <a href="/profile/index.html">Profile</a>
+
+      <!-- <a href="/f3-project-main/cart/index.html">My Cart</a> -->
+    </div>
+  </nav>
+  <!-- sing up form start here  -->
+  <div class="form-box">
+    <form action="">
+      <h2>Profile</h2>
+      <input type="text" placeholder="First Name" id="fname">
+      <input type="text" placeholder="Last Name" id="lname">
+      <input type="text" placeholder="Email" id="email">
+      <input type="text" placeholder="password" id="password">
+      <input type="text" placeholder="confirm Password" id="cpassword">
+      <p id="error"></p>
+      <input type="submit" value="Save" id="SaveInfo">
+      <br>
+      <input type="submit" value="Log out" id="LogOut">
+
+    </form>
+  </div>
+  <!-- sing up form end here  -->
+  <script>
+    let logOut = document.getElementById("LogOut");
+    logOut.addEventListener("click", (e) => {
+      console.log("clicked");
+      e.preventDefault();
+      window.location.href = "/login/login.html"
+
+    })
+    let btn = document.getElementById("SaveInfo");
+    btn.addEventListener("click", validateForm);
+    let arr = [];
+
+
+    function validateForm(e) {
+
+      e.preventDefault();
+      let fname = document.getElementById("fname").value;
+      let lname = document.getElementById("lname").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      let error = document.getElementById("error");
+      let confrim_password = document.getElementById("cpassword").value;
+
+      if (!fnameValid(fname, error)) {
+        error.innerHTML = "First Name should be contain at least 3 Character"
+      } else if (!lnameValid(lname, error)) {
+        error.innerHTML = "Last Name should be contain at least 3 Character"
+
+      }
+      else if (!emailValid(email, error)) {
+        error.innerHTML = "Email should be valid";
+      }
+      else if (!checkPasword(password)) {
+        error.innerHTML = "Password should be 1 small and capital character and number";
+      }
+      else if (password != confrim_password) {
+        error.innerHTML = "Password and confrim password did not match";
+      } else {
+        error.innerHTML = " ";
+        let obj = { fname, lname, email, password }
+
+        let temp = JSON.parse(localStorage.getItem("data"));
+        console.log(temp);
+        if (temp) {
+          arr = [...temp]
+        }
+        arr.push(obj)
+        localStorage.setItem("data", JSON.stringify(arr));
+
+        alert("updated successfully");
+      }
+
+    }
+    //------------------------------F-Name valid validation 
+    function fnameValid(name, error) {
+      if (name.length > 2) {
+        error.innerHTML = "";
+        return true;
+      }
+      return false;
+    }
+    //here check lname validation
+    function lnameValid(lname, error) {
+      if (lname.length > 2) {
+        error.innerHTML = "";
+        return true;
+      }
+      return false;
+
+    }
+    //Function email validation
+    function emailValid(username, error) {
+      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      if (username.match(validRegex)) {
+
+        error.innerHTML = "";
+
+        return true;
+
+      } else {
+
+        return false;
+      }
+    }
+    //------check password validation    
+    function checkPasword(password) {
+      let cl = 0, sl = 0, n = 0, sc = 0;
+      for (let t of password) {
+        if (t >= "A" && t <= "Z") {
+          cl++;
+        }
+        else if (t >= "a" && t <= "z") {
+          sl++;
+        }
+        else if (t >= "0" && t <= "9") {
+          n++;
+        }
+
+      }
+      if (cl >= 1 && sl >= 1 && n >= 1) {
+        return true;
+      }
+      return false;
+    }
+  </script>
+
+</body>
+
+</html>

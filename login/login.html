@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <a href="/">MeShop.</a>
+        </div>
+        <div class="nav-items">
+            <!-- <a href="/f3-project-main/shop/index.html">Home</a> -->
+            <a href="/f3-project-main/login/login.html">Login</a>
+            <a href="/f3-project-main/singup/index.html">Signup</a>
+            <!-- <a href="/f3-project-main/cart/index.html">My Cart</a> -->
+        </div>
+    </nav>
+    <div class="form-box">
+        <form action="">
+            <h2>Log in</h2>
+
+            <input type="text" placeholder="Email" id="email">
+            <input type="text" placeholder="password" id="password">
+
+            <p id="SingUperror">Please Enter correct Password and Email</p>
+            <input type="submit" value="Login" id="login">
+
+        </form>
+    </div>
+    <script>
+        let login = document.getElementById("login");
+        console.log(login);
+        login.addEventListener("click", (e) => {
+            console.log("clicked")
+            e.preventDefault();
+            let emailExitFlag = true;
+            let eamil = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let error = document.getElementById("SingUperror");
+
+            console.log(password);
+            let temp = JSON.parse(localStorage.getItem("data"));
+            for (let i in temp) {
+                if (temp[i].email === eamil && temp[i].password === password) {
+
+                    emailExitFlag = false;
+                    // let temp = JSON.parse(localStorage.getItem("data"));
+                    // temp[i]["token"] = result;
+                    // console.log(temp);
+                    // localStorage.setItem("data", JSON.stringify(temp));
+                    // localStorage.setItem("loginInfo", JSON.stringify(temp[i].email));
+
+                    window.location.href = "/shop/index.html";
+                }
+            }
+            if (emailExitFlag) {
+                error.style.cssText = "visibility:visible";
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
